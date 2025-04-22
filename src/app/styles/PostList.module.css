@@ -1,0 +1,27 @@
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  border: 1px solid #eee;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.body {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.id {
+  font-size: 0.9em;
+  color: #999;
+}
