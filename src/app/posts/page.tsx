@@ -61,8 +61,8 @@ const PostsPage: React.FC = () => {
 
   useEffect(() => {
     fetchPosts();
-    //}, [fetchPosts]);
-  }, []);
+  }, [fetchPosts]);
+  //}, []);
 
   useEffect(() => {
     const handleScroll = () => {
