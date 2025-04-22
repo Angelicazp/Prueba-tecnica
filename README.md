@@ -75,21 +75,35 @@ API Utilizada
 
 JSONPlaceholder (https://jsonplaceholder.typicode.com/)
 
-Decisiones Técnicas Tomadas
+## Decisiones Técnicas Tomadas
 
-App Router: Se utilizó el nuevo App Router de Next.js para definir las rutas y organizar los componentes dentro de la carpeta app/. Esto permite el uso de Server Components y Client Components.
+# App Router:
 
-Componentes Cliente para Hooks: Los componentes que utilizan React Hooks (como useState, useEffect, useContext, y los hooks de next/navigation) se marcaron explícitamente como Componentes Cliente utilizando la directiva 'use client';.
+Se utilizó el nuevo App Router de Next.js para definir las rutas y organizar los componentes dentro de la carpeta app/. Esto permite el uso de Server Components y Client Components.
 
-Context API para Autenticación: Se eligió el Context API para gestionar el estado de autenticación de manera global en la aplicación, facilitando el acceso al estado del usuario y las funciones de login/logout en diferentes componentes. El AuthProvider se implementó como un Componente Cliente para poder usar useState y useRouter.
+# Componentes Cliente para Hooks:
 
-CSS Modules para Estilos: Se utilizaron CSS Modules para encapsular los estilos de cada componente, evitando colisiones de nombres de clases y mejorando la mantenibilidad del CSS.
+Los componentes que utilizan React Hooks (como useState, useEffect, useContext, y los hooks de next/navigation) se marcaron explícitamente como Componentes Cliente utilizando la directiva 'use client';.
 
-next/navigation para Redirección: Dentro de los Componentes Cliente en el App Router, se utilizó el hook useRouter de next/navigation para realizar las redirecciones (por ejemplo, tras el login o al intentar acceder a rutas protegidas sin autenticar).
+# Context API para Autenticación:
 
-useCallback para Memoización: Se utilizaron useCallback en funciones que se pasan como props a componentes hijos o que se utilizan en arrays de dependencia de useEffect para optimizar el rendimiento al evitar la recreación innecesaria de funciones.
+Se eligió el Context API para gestionar el estado de autenticación de manera global en la aplicación, facilitando el acceso al estado del usuario y las funciones de login/logout en diferentes componentes. El AuthProvider se implementó como un Componente Cliente para poder usar useState y useRouter.
 
-Paginación Infinita con Filtrado: La lógica de paginación infinita se implementó en la página /posts, cargando los posts de la API JSONPlaceholder en lotes y aplicando los filtros (por texto y userId) a los resultados. El estado de la paginación se reinicia al cambiar los filtros.
+# CSS Modules para Estilos:
+
+Se utilizaron CSS Modules para encapsular los estilos de cada componente, evitando colisiones de nombres de clases y mejorando la mantenibilidad del CSS.
+
+# next/navigation para Redirección:
+
+Dentro de los Componentes Cliente en el App Router, se utilizó el hook useRouter de next/navigation para realizar las redirecciones (por ejemplo, tras el login o al intentar acceder a rutas protegidas sin autenticar).
+
+# useCallback para Memoización
+
+Se utilizaron useCallback en funciones que se pasan como props a componentes hijos o que se utilizan en arrays de dependencia de useEffect para optimizar el rendimiento al evitar la recreación innecesaria de funciones.
+
+# Paginación Infinita con Filtrado
+
+La lógica de paginación infinita se implementó en la página /posts, cargando los posts de la API JSONPlaceholder en lotes y aplicando los filtros (por texto y userId) a los resultados. El estado de la paginación se reinicia al cambiar los filtros.
 
 # Documentación Técnica del Proyecto de Autenticación y Listado de Posts
 
@@ -206,5 +220,23 @@ El proyecto sigue una arquitectura basada en componentes de React, utilizando la
 - **CSS Modules:** El uso de CSS Modules se adoptó para garantizar la modularidad y evitar la contaminación del espacio de nombres de los estilos.
 - **Paginación Infinita:** Se implementó la carga progresiva de datos basada en el evento `scroll` para mejorar la experiencia de usuario al cargar grandes conjuntos de datos.
 - **Filtrado en el Cliente (Parcialmente):** Debido a las limitaciones de la API JSONPlaceholder, el filtrado por título y cuerpo se realiza en el cliente después de obtener los datos paginados. El filtrado por `userId` se aprovecha en la consulta a la API.
+
+## Dificultades Encontradas
+
+# Comprensión Inicial del App Router:
+
+La transición del Page Router al App Router requirió entender la nueva forma de definir rutas, la distinción entre Server y Client Components, y las nuevas APIs de navegación (next/navigation).
+
+# Manejo de Estado en Componentes Cliente:
+
+Asegurar que el estado se gestionara correctamente en los Componentes Cliente y que las actualizaciones se reflejaran en la interfaz de usuario según las interacciones del usuario (login, logout, filtrado, scroll).
+
+# Simulación de Persistencia:
+
+La persistencia del estado de autenticación se simuló utilizando localStorage, lo cual no es una solución segura para una aplicación real, pero fue suficiente para cumplir con el requisito de mock de autenticación.
+
+# Implementación de Paginación Infinita con Filtrado:
+
+Lograr que la paginación infinita funcionara correctamente en combinación con el filtrado requirió una cuidadosa gestión del estado (posts cargados, página actual, si hay más posts) y la lógica de la llamada a la API al aplicar o cambiar los filtros.
 
 Tiempo Invertido : 4 horas y 30 minutos

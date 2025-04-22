@@ -67,7 +67,6 @@ const PostsPage: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !loading && hasMore) {
-        //console.log(window.innerHeight + window.scrollY, document.body.offsetHeight - 200, hasmore);
         fetchPosts();
       }
     };
